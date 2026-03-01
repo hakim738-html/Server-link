@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية - Server Link</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fafc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            direction: rtl; /* افتراضي للعربية */
+        }
+        body.en {
+            direction: ltr;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 30px;
+        }
+        .lang-switch {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .lang-btn {
+            background: #eef2f7;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            color: #2c3e50;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .lang-btn.active {
+            background: #2c3e50;
+            color: white;
+            border-color: #2c3e50;
+        }
+        .lang-btn:hover {
+            background: #d5dce5;
+        }
+        .content-ar, .content-en {
+            display: none;
+        }
+        .content-ar.active, .content-en.active {
+            display: block;
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: #1a2639;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+        h2 {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin: 25px 0 10px;
+        }
+        h3 {
+            font-size: 1.3rem;
+            color: #34495e;
+            margin: 20px 0 10px;
+        }
+        p, li {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+        }
+        ul {
+            margin-right: 20px; /* للعربية */
+            margin-left: 0;
+            padding-right: 20px;
+        }
+        body.en ul {
+            margin-left: 20px;
+            margin-right: 0;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .highlight {
+            background: #f0f7ff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #2980b9;
+        }
+        .footer {
+            margin-top: 40px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #7f8c8d;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- أزرار تبديل اللغة -->
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLang('ar')">🇸🇦 العربية</button>
+            <button class="lang-btn" onclick="switchLang('en')">🇬🇧 English</button>
+        </div>
+
+        <!-- المحتوى بالعربية -->
+        <div id="content-ar" class="content-ar active">
+            <h1>سياسة الخصوصية لتطبيق Server Link</h1>
+            <p><strong>آخر تحديث:</strong> 1 مارس 2026</p>
+
+            <h2>مقدمة</h2>
+            <p>نحن في تطبيق <span class="highlight">Server Link</span> نلتزم بحماية خصوصيتك وأمان بياناتك. توضح سياسة الخصوصية هذه كيفية تعاملنا مع المعلومات عندما تستخدم تطبيقنا لنقل الملفات عبر شبكة WiFi. باستخدامك للتطبيق، فإنك توافق على الممارسات الموضحة في هذه السياسة.</p>
+
+            <h2>المعلومات التي نجمعها</h2>
+            <p>تطبيق <span class="highlight">Server Link</span> لا يجمع أي معلومات شخصية أو بيانات تعريفية. يعمل التطبيق بالكامل محلياً على جهازك ولا يقوم بتحميل أي من بياناتك إلى خوادم خارجية.</p>
+
+            <h3>الأذونات المطلوبة:</h3>
+            <ul>
+                <li><strong>الوصول إلى الملفات والوسائط:</strong> يحتاج التطبيق إلى إذن لقراءة الملفات على جهازك وعرضها عبر خادم FTP المحلي. هذا ضروري فقط لتتمكن من مشاركة الملفات أو نقلها عبر الشبكة.</li>
+                <li><strong>الوصول إلى شبكة WiFi:</strong> يستخدم التطبيق شبكة WiFi المحلية لإنشاء اتصال FTP بين جهازك والأجهزة الأخرى. لا يتم جمع أي معلومات عن الشبكة أو استخدامها خارج نطاق الاتصال المحلي.</li>
+            </ul>
+
+            <h2>كيفية استخدام المعلومات</h2>
+            <ul>
+                <li>جميع عمليات نقل الملفات تتم <strong>محلياً</strong> داخل شبكتك المنزلية أو شبكة WiFi التي تتصل بها.</li>
+                <li>لا يتم إرسال أي من ملفاتك أو بياناتك إلى خوادمنا أو إلى أي جهة خارجية.</li>
+                <li>التطبيق لا يتتبع نشاطك، ولا يجمع إحصائيات استخدام، ولا يخزن أي سجلات للملفات المنقولة.</li>
+            </ul>
+
+            <h2>مشاركة المعلومات</h2>
+            <ul>
+                <li>نحن لا نشارك أي معلومات مع أطراف ثالثة لأننا لا نجمع أي معلومات أساساً.</li>
+                <li>التطبيق لا يحتوي على إعلانات أو أدوات تحليل تابعة لجهات خارجية.</li>
+            </ul>
+
+            <h2>الأمان</h2>
+            <p>نحن نأخذ أمان بياناتك على محمل الجد. ولأن التطبيق لا يقوم بتحميل البيانات خارج جهازك، فإن المخاطر الأمنية محدودة للغاية. مع ذلك، ننصحك بتأمين شبكة WiFi الخاصة بك بكلمة مرور قوية لمنع الوصول غير المصرح به إلى خادم الملفات الخاص بك عند تشغيل التطبيق.</p>
+
+            <h2>حقوق المستخدم</h2>
+            <p>لديك الحق الكامل في التحكم بملفاتك من خلال التطبيق. يمكنك إيقاف تشغيل الخادم في أي وقت من داخل التطبيق. كما يمكنك إلغاء تثبيت التطبيق في أي وقت، مما يزيل جميع الوظائف المرتبطة به دون ترك أي بيانات خلفه.</p>
+
+            <h2>التغييرات على سياسة الخصوصية</h2>
+            <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنقوم بإعلامك بأي تغييرات عن طريق تحديث تاريخ "آخر تحديث" في أعلى الصفحة. نوصي بمراجعة هذه الصفحة بشكل دوري للاطلاع على أي تغييرات.</p>
+
+            <h2>الاتصال بنا</h2>
+            <p>إذا كانت لديك أي استفسارات أو مخاوف بشأن سياسة الخصوصية هذه، يمكنك التواصل معنا عبر البريد الإلكتروني:<br>
+            <strong>support@serverlink-app.com</strong> (يمكنك تغيير هذا البريد)</p>
+
+            <div class="footer">
+                <p>Server Link - نقل الملفات بسرعة وأمان عبر WiFi دون المساس بخصوصيتك.</p>
+            </div>
+        </div>
+
+        <!-- المحتوى بالإنجليزية -->
+        <div id="content-en" class="content-en">
+            <h1>Privacy Policy for Server Link App</h1>
+            <p><strong>Last Updated:</strong> March 1, 2026</p>
+
+            <h2>Introduction</h2>
+            <p>At <span class="highlight">Server Link</span>, we are committed to protecting your privacy and data security. This Privacy Policy explains how we handle information when you use our app to transfer files over WiFi. By using the app, you agree to the practices described in this policy.</p>
+
+            <h2>Information We Collect</h2>
+            <p><span class="highlight">Server Link</span> does not collect any personal information or identifiable data. The app operates entirely locally on your device and does not upload any of your data to external servers.</p>
+
+            <h3>Permissions Required:</h3>
+            <ul>
+                <li><strong>Access to files and media:</strong> The app needs permission to read files on your device and serve them via a local FTP server. This is necessary only for you to share or transfer files over the network.</li>
+                <li><strong>WiFi network access:</strong> The app uses the local WiFi network to establish an FTP connection between your device and other devices. No network information is collected or used outside the local connection scope.</li>
+            </ul>
+
+            <h2>How We Use Information</h2>
+            <ul>
+                <li>All file transfers occur <strong>locally</strong> within your home or WiFi network.</li>
+                <li>None of your files or data are sent to our servers or any third party.</li>
+                <li>The app does not track your activity, collect usage statistics, or store logs of transferred files.</li>
+            </ul>
+
+            <h2>Information Sharing</h2>
+            <ul>
+                <li>We do not share any information with third parties because we do not collect any information in the first place.</li>
+                <li>The app contains no ads or third-party analytics tools.</li>
+            </ul>
+
+            <h2>Security</h2>
+            <p>We take data security seriously. Since the app does not upload data outside your device, security risks are extremely limited. However, we recommend securing your WiFi network with a strong password to prevent unauthorized access to your file server when the app is running.</p>
+
+            <h2>Your Rights</h2>
+            <p>You have full control over your files through the app. You can stop the server at any time from within the app. You can also uninstall the app at any time, removing all associated functions without leaving any data behind.</p>
+
+            <h2>Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this page. We advise you to review this page periodically for any changes.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions or concerns about this Privacy Policy, you can contact us via email:<br>
+            <strong>support@serverlink-app.com</strong> (you can change this address)</p>
+
+            <div class="footer">
+                <p>Server Link - Fast and secure file transfer over WiFi without compromising your privacy.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            // تحديث اتجاه الصفحة
+            const body = document.body;
+            if (lang === 'ar') {
+                body.classList.remove('en');
+                body.setAttribute('dir', 'rtl');
+            } else {
+                body.classList.add('en');
+                body.setAttribute('dir', 'ltr');
+            }
+
+            // تفعيل المحتوى المناسب
+            document.getElementById('content-ar').classList.remove('active');
+            document.getElementById('content-en').classList.remove('active');
+            document.getElementById(`content-${lang}`).classList.add('active');
+
+            // تحديث حالة الأزرار
+            document.querySelectorAll('.lang-btn').forEach((btn, index) => {
+                btn.classList.remove('active');
+                if ((lang === 'ar' && index === 0) || (lang === 'en' && index === 1)) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

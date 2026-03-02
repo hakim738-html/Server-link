@@ -2,254 +2,688 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سياسة الخصوصية - Server Link</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Server Link · سياسة الخصوصية (متجاوب بالكامل)</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter (modern) & Cairo (Arabic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* reset و متغيرات */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+        :root {
+            --primary-bg: #f4f7fb;
+            --card-bg: #ffffff;
+            --text-dark: #1e2b3c;
+            --text-soft: #2c3f5c;
+            --accent-blue: #2563eb;
+            --light-blue: #e8f0fe;
+            --border-light: #d0ddee;
+            --success-green: #1e7e34;
+            --error-red: #b91c1c;
+            --section-hover: #f9fcff;
+            --shadow-sm: 0 8px 20px -8px rgba(0,70,150,0.1);
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            --border-radius-card: 2.5rem;
+            --border-radius-section: 2rem;
+            --border-radius-element: 60px;
+            --transition: 0.2s ease;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f9fafc;
-            color: #333;
+            font-family: 'Inter', 'Cairo', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-dark);
             line-height: 1.6;
-            padding: 20px;
-            direction: rtl; /* افتراضي للعربية */
+            min-height: 100vh;
+            padding: clamp(1rem, 4vw, 2.5rem); /* responsive padding */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s;
         }
-        body.en {
-            direction: ltr;
-        }
+
         .container {
-            max-width: 1000px;
+            max-width: 1200px;  /* أوسع قليلاً للشاشات الكبيرة */
+            width: 100%;
             margin: 0 auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            padding: 30px;
+            background: var(--card-bg);
+            border-radius: var(--border-radius-card);
+            box-shadow: var(--shadow-lg);
+            padding: clamp(1.5rem, 5vw, 3.5rem);  /* responsive padding داخلي */
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(255,255,255,0.5);
         }
-        .lang-switch {
+
+        /* Language switcher - متجاوب */
+        .lang-switcher {
             display: flex;
             justify-content: flex-end;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 0.5rem 0.75rem;
+            margin-bottom: clamp(1.5rem, 4vw, 2.8rem);
+            flex-wrap: wrap;
         }
+
         .lang-btn {
-            background: #eef2f7;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 16px;
+            background: transparent;
+            border: 1.5px solid var(--border-light);
+            padding: 0.5rem 1.2rem;
+            border-radius: var(--border-radius-element);
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            color: #2c3e50;
-            font-weight: 600;
-            transition: 0.3s;
-            border: 1px solid transparent;
+            font-family: inherit;
+            color: var(--text-soft);
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
         }
+
+        .lang-btn i {
+            font-size: 0.9rem;
+            color: #4f6f8f;
+        }
+
         .lang-btn.active {
-            background: #2c3e50;
+            background: var(--text-dark);
+            border-color: var(--text-dark);
             color: white;
-            border-color: #2c3e50;
         }
-        .lang-btn:hover {
-            background: #d5dce5;
+
+        .lang-btn.active i {
+            color: white;
         }
-        .content-ar, .content-en {
-            display: none;
+
+        /* الهيدر */
+        .policy-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px dashed #cbd5e1;
+            padding-bottom: clamp(1rem, 3vw, 1.8rem);
+            flex-wrap: wrap;
         }
-        .content-ar.active, .content-en.active {
-            display: block;
+
+        .policy-header i {
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--accent-blue);
+            background: var(--light-blue);
+            padding: clamp(0.6rem, 2vw, 1rem);
+            border-radius: 30px;
         }
-        h1 {
-            font-size: 2.2rem;
-            color: #1a2639;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 25px;
+
+        .policy-header h1 {
+            font-weight: 700;
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+            letter-spacing: -0.02em;
+            color: #0b1e33;
+            line-height: 1.2;
         }
-        h2 {
-            font-size: 1.6rem;
-            color: #2c3e50;
-            margin: 25px 0 10px;
+
+        .policy-header h1 span {
+            font-weight: 400;
+            color: #3b5f8a;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            display: block; /* عشان لو صغرت الشاشة ينزل تحت */
         }
-        h3 {
-            font-size: 1.3rem;
-            color: #34495e;
-            margin: 20px 0 10px;
+
+        .last-updated {
+            background: #ecf3fa;
+            padding: 0.5rem 1.4rem;
+            border-radius: var(--border-radius-element);
+            display: inline-block;
+            margin-bottom: 2rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            font-weight: 500;
+            color: #1e3a6b;
+            width: fit-content;
+            max-width: 100%;
         }
-        p, li {
-            font-size: 1.05rem;
-            margin-bottom: 10px;
+
+        /* الأقسام الرئيسية */
+        .sections-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
+
+        .section {
+            margin: 0;
+            padding: clamp(1rem, 3vw, 2rem) clamp(1.2rem, 4vw, 2.5rem);
+            background: var(--section-hover);
+            border-radius: var(--border-radius-section);
+            border: 1px solid #e2edf7;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .section:hover {
+            background: white;
+            border-color: #b9d3f0;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
+            font-weight: 650;
+            margin-bottom: 1.2rem;
+            color: #134078;
+            flex-wrap: wrap;
+        }
+
+        .section-title i {
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            color: var(--accent-blue);
+            background: white;
+            padding: 0.5rem;
+            border-radius: 18px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.02);
+        }
+
+        .section p {
+            font-size: clamp(1rem, 2.8vw, 1.15rem);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .section p i.fa-angle-right {
+            color: var(--accent-blue);
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+        }
+
+        /* قوائم مخصصة */
         ul {
-            margin-right: 20px; /* للعربية */
-            margin-left: 0;
-            padding-right: 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0.5rem 0 0.5rem 0;
         }
-        body.en ul {
-            margin-left: 20px;
-            margin-right: 0;
-            padding-left: 20px;
+
+        ul li {
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
         }
-        li {
-            margin-bottom: 5px;
+
+        ul li i {
+            flex-shrink: 0;
+            margin-top: 0.2rem;
+            font-size: 1.2rem;
         }
-        .highlight {
-            background: #f0f7ff;
-            padding: 2px 8px;
-            border-radius: 6px;
+
+        ul li i.fa-circle-check,
+        ul li i.fa-regular.fa-circle-check {
+            color: var(--success-green);
+        }
+
+        ul li i.fa-circle-xmark,
+        ul li i.fa-regular.fa-circle-xmark {
+            color: var(--error-red);
+        }
+
+        ul li i.fa-circle {
+            font-size: 0.6rem;
+            color: var(--accent-blue);
+            margin-top: 0.5rem;
+        }
+
+        /* contact block - متجاوب جداً */
+        .contact-block {
+            background: #e6eff9;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 5vw, 3rem);
+            margin-top: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem 2rem;
+            border: 1px solid #bed9f7;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem 1rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            flex: 1 1 250px;
+            min-width: 200px;
+        }
+
+        .contact-item i {
+            background: var(--text-dark);
+            color: white;
+            border-radius: 50%;
+            padding: 0.7rem;
+            width: 2.8rem;
+            height: 2.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-email {
+            font-family: 'Inter', 'Cairo', monospace;
             font-weight: 600;
-            color: #2980b9;
+            background: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            color: #0c4a6e;
+            border: 1px solid #a0c4e8;
+            font-size: clamp(0.75rem, 2.2vw, 0.95rem);
+            word-break: break-all;
+            display: inline-block;
+            max-width: 100%;
         }
-        .footer {
-            margin-top: 40px;
-            border-top: 1px solid #ddd;
-            padding-top: 20px;
+
+        .footer-note {
             text-align: center;
-            font-size: 0.95rem;
-            color: #7f8c8d;
+            margin-top: 2.5rem;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            color: #5e6f88;
+            background: #f0f4fa;
+            padding: 1.2rem 1rem;
+            border-radius: 40px;
+            border: 1px dashed #a5c0da;
+            width: 100%;
         }
-        @media (max-width: 600px) {
+
+        .comm-note {
+            text-align: center;
+            margin: 0.8rem 0 0;
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
+            background: #eef3fb;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            width: auto;
+        }
+
+        /* RTL fine-tuning */
+        html[lang="ar"] body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+        }
+
+        html[lang="ar"] .section-title {
+            font-weight: 700;
+        }
+
+        /* تحسينات للشاشات الصغيرة جداً */
+        @media (max-width: 480px) {
             .container {
-                padding: 20px;
+                padding: 1.2rem;
+                border-radius: 2rem;
             }
-            h1 {
-                font-size: 1.8rem;
+            .policy-header i {
+                padding: 0.5rem;
             }
+            .section {
+                padding: 1rem 1rem;
+            }
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .contact-item i {
+                margin-bottom: 0.2rem;
+            }
+            .lang-btn {
+                padding: 0.4rem 0.9rem;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* للشاشات المتوسطة (تابلت) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .container {
+                padding: 2.2rem;
+            }
+            .contact-block {
+                flex-direction: row;
+            }
+        }
+
+        /* للشاشات الكبيرة جداً */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1300px;
+            }
+            .section {
+                padding: 2.2rem 3rem;
+            }
+        }
+
+        /* تحسين ظهور القوائم */
+        .list-heading {
+            font-weight: 600;
+            margin: 1rem 0 0.3rem 0;
+            font-size: clamp(1rem, 2.8vw, 1.15rem);
+        }
+
+        /* أيقونات إضافية */
+        .fa-regular, .fas, .far {
+            line-height: 1;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- أزرار تبديل اللغة -->
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="switchLang('ar')">🇸🇦 العربية</button>
-            <button class="lang-btn" onclick="switchLang('en')">🇬🇧 English</button>
+    <div class="container" id="mainContainer">
+        <!-- language switcher -->
+        <div class="lang-switcher">
+            <button class="lang-btn active" id="btnAR" data-lang="ar"><i class="fas fa-globe"></i> العربية</button>
+            <button class="lang-btn" id="btnEN" data-lang="en"><i class="fas fa-language"></i> English</button>
         </div>
 
-        <!-- المحتوى بالعربية -->
-        <div id="content-ar" class="content-ar active">
-            <h1>سياسة الخصوصية لتطبيق Server Link</h1>
-            <p><strong>آخر تحديث:</strong> 1 مارس 2026</p>
-
-            <h2>مقدمة</h2>
-            <p>نحن في تطبيق <span class="highlight">Server Link</span> نلتزم بحماية خصوصيتك وأمان بياناتك. توضح سياسة الخصوصية هذه كيفية تعاملنا مع المعلومات عندما تستخدم تطبيقنا لنقل الملفات عبر شبكة WiFi. باستخدامك للتطبيق، فإنك توافق على الممارسات الموضحة في هذه السياسة.</p>
-
-            <h2>المعلومات التي نجمعها</h2>
-            <p>تطبيق <span class="highlight">Server Link</span> لا يجمع أي معلومات شخصية أو بيانات تعريفية. يعمل التطبيق بالكامل محلياً على جهازك ولا يقوم بتحميل أي من بياناتك إلى خوادم خارجية.</p>
-
-            <h3>الأذونات المطلوبة:</h3>
-            <ul>
-                <li><strong>الوصول إلى الملفات والوسائط:</strong> يحتاج التطبيق إلى إذن لقراءة الملفات على جهازك وعرضها عبر خادم FTP المحلي. هذا ضروري فقط لتتمكن من مشاركة الملفات أو نقلها عبر الشبكة.</li>
-                <li><strong>الوصول إلى شبكة WiFi:</strong> يستخدم التطبيق شبكة WiFi المحلية لإنشاء اتصال FTP بين جهازك والأجهزة الأخرى. لا يتم جمع أي معلومات عن الشبكة أو استخدامها خارج نطاق الاتصال المحلي.</li>
-            </ul>
-
-            <h2>كيفية استخدام المعلومات</h2>
-            <ul>
-                <li>جميع عمليات نقل الملفات تتم <strong>محلياً</strong> داخل شبكتك المنزلية أو شبكة WiFi التي تتصل بها.</li>
-                <li>لا يتم إرسال أي من ملفاتك أو بياناتك إلى خوادمنا أو إلى أي جهة خارجية.</li>
-                <li>التطبيق لا يتتبع نشاطك، ولا يجمع إحصائيات استخدام، ولا يخزن أي سجلات للملفات المنقولة.</li>
-            </ul>
-
-            <h2>مشاركة المعلومات</h2>
-            <ul>
-                <li>نحن لا نشارك أي معلومات مع أطراف ثالثة لأننا لا نجمع أي معلومات أساساً.</li>
-                <li>التطبيق لا يحتوي على إعلانات أو أدوات تحليل تابعة لجهات خارجية.</li>
-            </ul>
-
-            <h2>الأمان</h2>
-            <p>نحن نأخذ أمان بياناتك على محمل الجد. ولأن التطبيق لا يقوم بتحميل البيانات خارج جهازك، فإن المخاطر الأمنية محدودة للغاية. مع ذلك، ننصحك بتأمين شبكة WiFi الخاصة بك بكلمة مرور قوية لمنع الوصول غير المصرح به إلى خادم الملفات الخاص بك عند تشغيل التطبيق.</p>
-
-            <h2>حقوق المستخدم</h2>
-            <p>لديك الحق الكامل في التحكم بملفاتك من خلال التطبيق. يمكنك إيقاف تشغيل الخادم في أي وقت من داخل التطبيق. كما يمكنك إلغاء تثبيت التطبيق في أي وقت، مما يزيل جميع الوظائف المرتبطة به دون ترك أي بيانات خلفه.</p>
-
-            <h2>التغييرات على سياسة الخصوصية</h2>
-            <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنقوم بإعلامك بأي تغييرات عن طريق تحديث تاريخ "آخر تحديث" في أعلى الصفحة. نوصي بمراجعة هذه الصفحة بشكل دوري للاطلاع على أي تغييرات.</p>
-
-            <h2>الاتصال بنا</h2>
-            <p>إذا كانت لديك أي استفسارات أو مخاوف بشأن سياسة الخصوصية هذه، يمكنك التواصل معنا عبر البريد الإلكتروني:<br>
-            <strong>support@serverlink-app.com</strong> (يمكنك تغيير هذا البريد)</p>
-
-            <div class="footer">
-                <p>Server Link - نقل الملفات بسرعة وأمان عبر WiFi دون المساس بخصوصيتك.</p>
-            </div>
+        <!-- icon + title -->
+        <div class="policy-header">
+            <i class="fas fa-shield-halved"></i>
+            <h1>Server Link <span id="subPolicy">📄 سياسة الخصوصية</span></h1>
         </div>
 
-        <!-- المحتوى بالإنجليزية -->
-        <div id="content-en" class="content-en">
-            <h1>Privacy Policy for Server Link App</h1>
-            <p><strong>Last Updated:</strong> March 1, 2026</p>
+        <!-- last updated (dynamic) -->
+        <div class="last-updated" id="lastUpdated">
+            <i class="fas fa-calendar-alt"></i> آخر تحديث: 2 مارس 2026 <i class="fas fa-calendar-check"></i>
+        </div>
 
-            <h2>Introduction</h2>
-            <p>At <span class="highlight">Server Link</span>, we are committed to protecting your privacy and data security. This Privacy Policy explains how we handle information when you use our app to transfer files over WiFi. By using the app, you agree to the practices described in this policy.</p>
+        <!-- ALL SECTIONS will be injected by JS -->
+        <div id="contentSections" class="sections-grid"></div>
 
-            <h2>Information We Collect</h2>
-            <p><span class="highlight">Server Link</span> does not collect any personal information or identifiable data. The app operates entirely locally on your device and does not upload any of your data to external servers.</p>
+        <!-- contact block (emails and names) -->
+        <div class="contact-block" id="contactBlock">
+            <!-- will be populated by js -->
+        </div>
 
-            <h3>Permissions Required:</h3>
-            <ul>
-                <li><strong>Access to files and media:</strong> The app needs permission to read files on your device and serve them via a local FTP server. This is necessary only for you to share or transfer files over the network.</li>
-                <li><strong>WiFi network access:</strong> The app uses the local WiFi network to establish an FTP connection between your device and other devices. No network information is collected or used outside the local connection scope.</li>
-            </ul>
+        <!-- footer agreement -->
+        <div class="footer-note" id="footerNote">
+            باستخدامك لتطبيق Server Link فإنك توافق على سياسة الخصوصية هذه.
+        </div>
 
-            <h2>How We Use Information</h2>
-            <ul>
-                <li>All file transfers occur <strong>locally</strong> within your home or WiFi network.</li>
-                <li>None of your files or data are sent to our servers or any third party.</li>
-                <li>The app does not track your activity, collect usage statistics, or store logs of transferred files.</li>
-            </ul>
-
-            <h2>Information Sharing</h2>
-            <ul>
-                <li>We do not share any information with third parties because we do not collect any information in the first place.</li>
-                <li>The app contains no ads or third-party analytics tools.</li>
-            </ul>
-
-            <h2>Security</h2>
-            <p>We take data security seriously. Since the app does not upload data outside your device, security risks are extremely limited. However, we recommend securing your WiFi network with a strong password to prevent unauthorized access to your file server when the app is running.</p>
-
-            <h2>Your Rights</h2>
-            <p>You have full control over your files through the app. You can stop the server at any time from within the app. You can also uninstall the app at any time, removing all associated functions without leaving any data behind.</p>
-
-            <h2>Changes to This Privacy Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by updating the "Last Updated" date at the top of this page. We advise you to review this page periodically for any changes.</p>
-
-            <h2>Contact Us</h2>
-            <p>If you have any questions or concerns about this Privacy Policy, you can contact us via email:<br>
-            <strong>support@serverlink-app.com</strong> (you can change this address)</p>
-
-            <div class="footer">
-                <p>Server Link - Fast and secure file transfer over WiFi without compromising your privacy.</p>
-            </div>
+        <!-- tiny communication note (اختياري) -->
+        <div class="comm-note" id="commNote">
+            <i class="fas fa-envelope"></i> للتواصل / Contact
         </div>
     </div>
 
     <script>
-        function switchLang(lang) {
-            // تحديث اتجاه الصفحة
-            const body = document.body;
-            if (lang === 'ar') {
-                body.classList.remove('en');
-                body.setAttribute('dir', 'rtl');
-            } else {
-                body.classList.add('en');
-                body.setAttribute('dir', 'ltr');
+        (function() {
+            // ---------- BILINGUAL CONTENT (مع بعض التحسينات) ----------
+            const content = {
+                ar: {
+                    policyTitle: "📄 سياسة الخصوصية",
+                    lastUpdated: "آخر تحديث: 2 مارس 2026",
+                    sections: [
+                        {
+                            title: "1. جمع المعلومات",
+                            icon: "fa-database",
+                            items: [
+                                { type: "statement", text: "تطبيق Server Link لا يقوم بجمع أو تخزين أو مشاركة أي بيانات شخصية على خوادم خارجية." },
+                                { type: "list", style: "negative", points: [
+                                    "إنشاء حساب",
+                                    "تسجيل دخول عبر بريد إلكتروني",
+                                    "إدخال بيانات شخصية"
+                                ] }
+                            ]
+                        },
+                        {
+                            title: "2. الملفات والبيانات المحلية",
+                            icon: "fa-folder-open",
+                            items: [
+                                { type: "statement", text: "جميع الملفات التي يتم الوصول إليها أو نقلها تظل على جهاز المستخدم وداخل شبكته المحلية (WiFi)." },
+                                { type: "list", style: "negative", points: [
+                                    "رفع الملفات إلى أي خادم خارجي",
+                                    "تخزين الملفات في السحابة",
+                                    "إرسال الملفات إلى أي طرف ثالث"
+                                ] }
+                            ]
+                        },
+                        {
+                            title: "3. الاتصال بالشبكة المحلية",
+                            icon: "fa-wifi",
+                            items: [
+                                { type: "statement", text: "يستخدم التطبيق بروتوكول FTP لإنشاء خادم محلي داخل شبكة WiFi الخاصة بالمستخدم. هذا الاتصال يتم فقط بين الأجهزة المتصلة بنفس الشبكة." },
+                                { type: "statement", text: "لا يتم إرسال أي بيانات عبر الإنترنت إلا إذا كانت شبكة المستخدم متصلة به بشكل مستقل." }
+                            ]
+                        },
+                        {
+                            title: "4. الأمان",
+                            icon: "fa-lock",
+                            items: [
+                                { type: "statement", text: "يوفر التطبيق خيار حماية الخادم باسم مستخدم وكلمة مرور لمنع الوصول غير المصرح به داخل الشبكة المحلية." },
+                                { type: "list", style: "positive", heading: "المستخدم مسؤول عن:", points: [
+                                    "اختيار كلمة مرور قوية",
+                                    "إيقاف الخادم عند الانتهاء من الاستخدام",
+                                    "تأمين شبكة WiFi الخاصة به"
+                                ] }
+                            ]
+                        },
+                        {
+                            title: "5. الأذونات (Permissions)",
+                            icon: "fa-key",
+                            items: [
+                                { type: "statement", text: "قد يطلب التطبيق الأذونات التالية:" },
+                                { type: "list", style: "bullet", points: [
+                                    "الوصول إلى الملفات (لتمكين نقل وإدارة الملفات)",
+                                    "الوصول إلى الشبكة (لإنشاء الاتصال المحلي)"
+                                ] },
+                                { type: "statement", text: "يتم استخدام هذه الأذونات فقط لتشغيل وظائف التطبيق الأساسية." }
+                            ]
+                        },
+                        {
+                            title: "6. مشاركة البيانات مع أطراف ثالثة",
+                            icon: "fa-user-secret",
+                            items: [ { type: "statement", text: "لا يقوم Server Link ببيع أو تأجير أو مشاركة أي بيانات مع أطراف ثالثة." } ]
+                        },
+                        {
+                            title: "7. خدمات الطرف الثالث",
+                            icon: "fa-cubes",
+                            items: [ { type: "statement", text: "إذا تم استخدام مكتبات أو أدوات خارجية داخل التطبيق، فقد تخضع لسياسات خصوصية منفصلة. ننصح بمراجعة سياسات تلك الجهات عند الحاجة." } ]
+                        },
+                        {
+                            title: "8. تحديثات سياسة الخصوصية",
+                            icon: "fa-rotate",
+                            items: [ { type: "statement", text: "قد نقوم بتحديث هذه السياسة من وقت لآخر. سيتم نشر أي تغييرات داخل التطبيق أو صفحة المتجر." } ]
+                        }
+                    ],
+                    contact: {
+                        hakim: "حكيم",
+                        hassan: "حسن",
+                        emailHakim: "halrb2588@gmail.com",
+                        emailHassan: "Alhassan7362@gmail.com"
+                    },
+                    footer: "باستخدامك لتطبيق Server Link فإنك توافق على سياسة الخصوصية هذه."
+                },
+                en: {
+                    policyTitle: "📄 Privacy Policy",
+                    lastUpdated: "Last updated: March 2, 2026",
+                    sections: [
+                        {
+                            title: "1. Information Collection",
+                            icon: "fa-database",
+                            items: [
+                                { type: "statement", text: "The Server Link application does not collect, store, or share any personal data on external servers." },
+                                { type: "list", style: "negative", points: [
+                                    "Account creation",
+                                    "Email login",
+                                    "Entry of personal data"
+                                ] }
+                            ]
+                        },
+                        {
+                            title: "2. Local Files and Data",
+                            icon: "fa-folder-open",
+                            items: [
+                                { type: "statement", text: "All files accessed or transferred remain on the user's device and within their local network (WiFi)." },
+                                { type: "list", style: "negative", points: [
+                                    "Uploading files to any external server",
+                                    "Storage of files in the cloud",
+                                    "Sending files to any third party"
+                                ] }
+                            ]
+                        },
+                        {
+                            title: "3. Local Network Connection",
+                            icon: "fa-wifi",
+                            items: [
+                                { type: "statement", text: "The app uses the FTP protocol to create a local server within the user's WiFi network. This connection occurs only between devices connected to the same network." },
+                                { type: "statement", text: "No data is sent over the internet unless the user's network is independently connected to it." }
+                            ]
+                        },
+                        {
+                            title: "4. Security",
+                            icon: "fa-lock",
+                            items: [
+                                { type: "statement", text: "The app provides the option to protect the server with a username and password to prevent unauthorized access within the local network." },
+                                { type: "list", style: "positive", heading: "The user is responsible for:", points: [
+                                    "Choosing a strong password",
+                                    "Stopping the server when finished using it",
+                                    "Securing their own WiFi network"
+                                ] }
+                            ]
+                        },
+                        {
+                            title: "5. Permissions",
+                            icon: "fa-key",
+                            items: [
+                                { type: "statement", text: "The app may request the following permissions:" },
+                                { type: "list", style: "bullet", points: [
+                                    "Access to files (to enable file transfer and management)",
+                                    "Access to the network (to establish local connection)"
+                                ] },
+                                { type: "statement", text: "These permissions are used only to operate the app's core functions." }
+                            ]
+                        },
+                        {
+                            title: "6. Sharing Data with Third Parties",
+                            icon: "fa-user-secret",
+                            items: [ { type: "statement", text: "Server Link does not sell, rent, or share any data with third parties." } ]
+                        },
+                        {
+                            title: "7. Third-Party Services",
+                            icon: "fa-cubes",
+                            items: [ { type: "statement", text: "If external libraries or tools are used within the app, they may be subject to separate privacy policies. We recommend reviewing their policies if needed." } ]
+                        },
+                        {
+                            title: "8. Privacy Policy Updates",
+                            icon: "fa-rotate",
+                            items: [ { type: "statement", text: "We may update this policy from time to time. Any changes will be posted within the app or on the store page." } ]
+                        }
+                    ],
+                    contact: {
+                        hakim: "Hakim",
+                        hassan: "Hassan",
+                        emailHakim: "halrb2588@gmail.com",
+                        emailHassan: "Alhassan7362@gmail.com"
+                    },
+                    footer: "By using the Server Link application, you agree to this privacy policy."
+                }
+            };
+
+            // DOM elements
+            const btnAR = document.getElementById('btnAR');
+            const btnEN = document.getElementById('btnEN');
+            const subPolicy = document.getElementById('subPolicy');
+            const lastUpdatedEl = document.getElementById('lastUpdated');
+            const contentSections = document.getElementById('contentSections');
+            const contactBlock = document.getElementById('contactBlock');
+            const footerNote = document.getElementById('footerNote');
+            const commNote = document.getElementById('commNote');
+            const htmlTag = document.documentElement;
+
+            function renderLanguage(lang) {
+                const data = content[lang];
+                if (!data) return;
+
+                // تحديث النصوص الثابتة
+                subPolicy.innerText = data.policyTitle;
+                lastUpdatedEl.innerHTML = `<i class="fas fa-calendar-alt"></i> ${data.lastUpdated} <i class="fas fa-calendar-check"></i>`;
+                footerNote.innerText = data.footer;
+                commNote.innerHTML = `<i class="fas fa-envelope"></i> ${lang === 'ar' ? 'للتواصل / Contact' : 'Contact / للتواصل'}`;
+                htmlTag.setAttribute('lang', lang);
+
+                // بناء الأقسام
+                let sectionsHTML = '';
+                data.sections.forEach(sec => {
+                    let itemsHTML = '';
+                    sec.items.forEach(item => {
+                        if (item.type === 'statement') {
+                            itemsHTML += `<p><i class="fas fa-angle-right"></i>${item.text}</p>`;
+                        } else if (item.type === 'list') {
+                            if (item.heading) {
+                                itemsHTML += `<div class="list-heading">${item.heading}</div>`;
+                            }
+                            let listHTML = '<ul>';
+                            item.points.forEach(point => {
+                                if (item.style === 'negative') {
+                                    listHTML += `<li><i class="fa-regular fa-circle-xmark"></i> ${point}</li>`;
+                                } else if (item.style === 'positive') {
+                                    listHTML += `<li><i class="fa-regular fa-circle-check"></i> ${point}</li>`;
+                                } else {
+                                    listHTML += `<li><i class="fa-solid fa-circle"></i> ${point}</li>`;
+                                }
+                            });
+                            listHTML += '</ul>';
+                            itemsHTML += listHTML;
+                        }
+                    });
+
+                    sectionsHTML += `
+                        <div class="section">
+                            <div class="section-title">
+                                <i class="fas ${sec.icon}"></i> ${sec.title}
+                            </div>
+                            ${itemsHTML}
+                        </div>
+                    `;
+                });
+                contentSections.innerHTML = sectionsHTML;
+
+                // contact block
+                contactBlock.innerHTML = `
+                    <div class="contact-item"><i class="fas fa-user-circle"></i> <span><strong>${data.contact.hakim}</strong> <span class="contact-email">${data.contact.emailHakim}</span></span></div>
+                    <div class="contact-item"><i class="fas fa-user-circle"></i> <span><strong>${data.contact.hassan}</strong> <span class="contact-email">${data.contact.emailHassan}</span></span></div>
+                `;
             }
 
-            // تفعيل المحتوى المناسب
-            document.getElementById('content-ar').classList.remove('active');
-            document.getElementById('content-en').classList.remove('active');
-            document.getElementById(`content-${lang}`).classList.add('active');
-
-            // تحديث حالة الأزرار
-            document.querySelectorAll('.lang-btn').forEach((btn, index) => {
-                btn.classList.remove('active');
-                if ((lang === 'ar' && index === 0) || (lang === 'en' && index === 1)) {
-                    btn.classList.add('active');
+            function setActiveLang(lang) {
+                if (lang === 'ar') {
+                    btnAR.classList.add('active');
+                    btnEN.classList.remove('active');
+                } else {
+                    btnEN.classList.add('active');
+                    btnAR.classList.remove('active');
                 }
-            });
-        }
+                renderLanguage(lang);
+            }
+
+            // listeners
+            btnAR.addEventListener('click', () => setActiveLang('ar'));
+            btnEN.addEventListener('click', () => setActiveLang('en'));
+
+            // تحديد اللغة الافتراضية بناءً على متصفح المستخدم
+            const browserLang = navigator.language || navigator.userLanguage;
+            const defaultLang = browserLang.startsWith('ar') ? 'ar' : 'en';
+            setActiveLang(defaultLang);
+
+            // إضافة نقاط مراقبة للتأكد من عدم تجاوز المحتوى (للأمان)
+            window.addEventListener('resize', () => {}); // dummy, فقط لتفعيل أي تغييرات مستقبلية
+        })();
     </script>
 </body>
 </html>
